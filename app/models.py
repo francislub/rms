@@ -25,3 +25,6 @@ class Requisition(models.Model):
     cashier_signature = models.CharField(max_length=100, null=True, blank=True)
     receiver_signature = models.CharField(max_length=100, null=True, blank=True)
     voucher_number = models.CharField(max_length=100, null=True, blank=True)
+    supervisor_signature = models.ImageField(upload_to='supervisor_signatures/', null=True, blank=True)
+    checker1_signature = models.ImageField(upload_to='checker1_signatures/', null=True, blank=True)
+    checker2_signature = models.ImageField(upload_to='checker2_signatures/', null=True, blank=True)
