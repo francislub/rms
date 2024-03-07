@@ -1,6 +1,6 @@
 from django.db import models
 from account.models import CustomUser
-from .models import Department
+
 
 class Department(models.Model):
     name = models.CharField(max_length=100)
@@ -8,12 +8,6 @@ class Department(models.Model):
     def __str__(self):
         return self.name
     
-class Product(models.Model):
-    name = models.CharField(max_length=100)
-    department = models.ForeignKey('Department', on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
     
     
 class Product(models.Model):
