@@ -2,6 +2,12 @@ from django.contrib.auth.models import AbstractUser, UserManager
 from django.db import models
 from django.contrib.auth.hashers import make_password
 
+class Department(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
 class CustomUserManager(UserManager):
     def _create_user(self, email, password, **extra_fields):
         email = self.normalize_email(email)
@@ -39,7 +45,7 @@ class CustomUser(AbstractUser):
     REQUIRED_FIELDS = []
     signature = models.ImageField(upload_to='user_signatures/', null=True, blank=True)
     objects = CustomUserManager()
-    # department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    department = models.ForeignKey(Department, related_name='users', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.last_name + " " + self.first_name

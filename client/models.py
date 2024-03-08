@@ -1,19 +1,6 @@
 from django.db import models
-from account.models import CustomUser
-
-
-class Department(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
+from account.models import CustomUser, Department
     
-    
-    
-class Product(models.Model):
-    name = models.CharField(max_length=100)
-    department = models.ForeignKey(Department, on_delete=models.CASCADE)
-
 class Requisition(models.Model):
     requester = models.ForeignKey(CustomUser, related_name='requested_requisitions', on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)

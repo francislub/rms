@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from .email_backend import EmailBackend
 from django.contrib import messages
 from .forms import CustomUserForm
-from voting.forms import VoterForm
+from client.forms import VoterForm
 from django.contrib.auth import login, logout
 # Create your views here.
 
@@ -12,7 +12,7 @@ def account_login(request):
         if request.user.user_type == '1':
             return redirect(reverse("adminDashboard"))
         else:
-            return redirect(reverse("voterDashboard"))
+            return redirect(reverse("staffDashboard"))
 
     context = {}
     if request.method == 'POST':
@@ -23,7 +23,7 @@ def account_login(request):
             if user.user_type == '1':
                 return redirect(reverse("adminDashboard"))
             else:
-                return redirect(reverse("voterDashboard"))
+                return redirect(reverse("staffDashboard"))
         else:
             messages.error(request, "Invalid details")
             return redirect("/")
