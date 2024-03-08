@@ -36,16 +36,28 @@ def requisition_phase1(request):
         form = RequisitionPhase1Form()
     return render(request, 'requisition_phase1.html', {'form': form})
 
-def requisition_phase1(request):
+def requisition_phase2(request):
     if request.method == 'POST':
-        form = RequisitionPhase1Form(request.POST)
+        form = RequisitionPhase2Form(request.POST)
         if form.is_valid():
             requisition = form.save(commit=False)
             requisition.phase = 1
             requisition.save()
             return redirect('requisition_phase2')
     else:
-        form = RequisitionPhase1Form()
+        form = RequisitionPhase2Form()
+    return render(request, 'requisition_phase2.html', {'form': form})
+
+def requisition_phase3(request):
+    if request.method == 'POST':
+        form = RequisitionPhase3Form(request.POST)
+        if form.is_valid():
+            requisition = form.save(commit=False)
+            requisition.phase = 1
+            requisition.save()
+            return redirect('requisition_phase3')
+    else:
+        form = RequisitionPhase2Form()
     return render(request, 'requisition_phase1.html', {'form': form})
 
 # Similar views for other phases
