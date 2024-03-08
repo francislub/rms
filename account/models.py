@@ -34,7 +34,7 @@ class CustomUserManager(UserManager):
 
 
 class CustomUser(AbstractUser):
-    USER_TYPE = ((1, "Admin"), (2, "staff"))
+    USER_TYPE = ((1, "Admin"), (2, "staff"), (3, "cashier"))
     username = None 
     user_type = models.CharField(default=2, choices=USER_TYPE, max_length=1)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -43,9 +43,8 @@ class CustomUser(AbstractUser):
     full_name = models.CharField(max_length=255, blank=True)
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
-    signature = models.ImageField(upload_to='user_signatures/', null=True, blank=True)
     objects = CustomUserManager()
-    department = models.ForeignKey(Department, related_name='users', on_delete=models.SET_NULL, null=True, blank=True)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.last_name + " " + self.first_name

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from .email_backend import EmailBackend
 from django.contrib import messages
 from .forms import CustomUserForm
-from client.forms import VoterForm
+from client.forms import VForm
 from django.contrib.auth import login, logout
 # Create your views here.
 
