@@ -59,5 +59,3 @@ def requisition_phase3(request):
     else:
         form = RequisitionPhase2Form()
     return render(request, 'requisition_phase1.html', {'form': form})
-
-# Similar views for other phases
