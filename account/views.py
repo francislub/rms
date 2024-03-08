@@ -2,17 +2,18 @@ from django.shortcuts import render, redirect, reverse
 from .email_backend import EmailBackend
 from django.contrib import messages
 from .forms import CustomUserForm
-from client.forms import VForm
 from django.contrib.auth import login, logout
 # Create your views here.
 
 
 def account_login(request):
     if request.user.is_authenticated:
-        if request.user.user_type == '1':
+        if user.user_type == '1':
             return redirect(reverse("adminDashboard"))
-        else:
+        elif user.user_type == '2':
             return redirect(reverse("staffDashboard"))
+        else:
+            return redirect(reverse("cashierDashboard"))
 
     context = {}
     if request.method == 'POST':
@@ -22,35 +23,32 @@ def account_login(request):
             login(request, user)
             if user.user_type == '1':
                 return redirect(reverse("adminDashboard"))
-            else:
+            elif user.user_type == '2':
                 return redirect(reverse("staffDashboard"))
+            else:
+                return redirect(reverse("cashierDashboard"))
         else:
             messages.error(request, "Invalid details")
             return redirect("/")
 
-    return render(request, "voting/login.html", context)
+    return render(request, "client/login.html", context)
 
 
 def account_register(request):
     userForm = CustomUserForm(request.POST or None)
-    voterForm = VoterForm(request.POST or None)
     context = {
         'form1': userForm,
-        'form2': voterForm
     }
     if request.method == 'POST':
-        if userForm.is_valid() and voterForm.is_valid():
+        if userForm.is_valid():
             user = userForm.save(commit=False)
-            voter = voterForm.save(commit=False)
-            voter.admin = user
             user.save()
-            voter.save()
             messages.success(request, "Account created. You can login now!")
             return redirect(reverse('account_login'))
         else:
             messages.error(request, "Provided data failed validation")
             # return account_login(request)
-    return render(request, "voting/reg.html", context)
+    return render(request, "client/reg.html", context)
 
 
 def account_logout(request):
