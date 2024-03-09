@@ -6,6 +6,10 @@ from .forms import RequisitionPhase1Form, RequisitionPhase2Form, RequisitionPhas
 def login(request):
     return render(request, 'auth/login.html')
 
+def register(request):
+    return render(request, 'auth/reg.html')
+
+
 #===========Francis calling the dashbourd==============
 def dashboard(request):
     return render(request, 'dashboard.html')
