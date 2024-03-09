@@ -1,0 +1,18 @@
+
+body {
+    background-color: #ebeff5;
+}
+#total-order{
+    background-color: #4cb4c7;
+}
+#order-delivered{
+    background-color: #7abecc;
+}
+#order-pending{
+    background-color: #9ab1b6;
+}
+.dark-blue-bg {
+    background-color: #666; /* Adjusted color - darker than original */
+    color: #ffffff; /* White text color */
+}
+
