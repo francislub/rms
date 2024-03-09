@@ -9,6 +9,9 @@ def login(request):
 def register(request):
     return render(request, 'auth/reg.html')
 
+def lock(request):
+    return render(request, 'auth/lock_screen.html')
+
 
 #===========Francis calling the dashbourd==============
 def dashboard(request):
