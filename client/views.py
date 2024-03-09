@@ -4,6 +4,10 @@ from .forms import RequisitionPhase1Form, RequisitionPhase2Form, RequisitionPhas
 # Create your views here.
 
 def login(request):
+    return render(request, 'login.html')
+
+#===========Francis calling the dashbourd==============
+def dashboard(request):
     return render(request, 'dashboard.html')
 
 
