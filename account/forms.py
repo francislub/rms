@@ -16,6 +16,10 @@ class FormSettings(forms.ModelForm):
 class CustomUserForm(FormSettings):
     email = forms.EmailField(required=True)
     password = forms.CharField(widget=forms.PasswordInput)
+    
+    widget = {
+        'password': forms.PasswordInput(),
+    }
 
     def __init__(self, *args, **kwargs):
         super(CustomUserForm, self).__init__(*args, **kwargs)

@@ -12,6 +12,9 @@ def register(request):
 def lock(request):
     return render(request, 'auth/lock_screen.html')
 
+def dep(request):
+    return render(request, 'dep.html')
+
 
 #===========Francis calling the dashbourd==============
 def dashboard(request):
