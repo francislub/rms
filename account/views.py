@@ -41,6 +41,7 @@ def account_register(request):
     if request.method == 'POST':
         if userForm.is_valid():
             user = userForm.save(commit=False)
+            user.department = userForm.cleaned_data['department']
             user.save()
             messages.success(request, "Account created. You can login now!")
             return redirect(reverse('account_login'))
