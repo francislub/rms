@@ -5,7 +5,6 @@ from .forms import CustomUserForm
 from django.contrib.auth import login, logout
 # Create your views here.
 
-
 def account_login(request):
     if request.user.is_authenticated:
         if user.user_type == '1':
@@ -31,7 +30,7 @@ def account_login(request):
             messages.error(request, "Invalid details")
             return redirect("/")
 
-    return render(request, "client/login.html", context)
+    return render(request, "client/auth/login.html", context)
 
 
 def account_register(request):
@@ -48,7 +47,7 @@ def account_register(request):
         else:
             messages.error(request, "Provided data failed validation")
             # return account_login(request)
-    return render(request, "client/reg.html", context)
+    return render(request, "client/auth/reg.html", context)
 
 
 def account_logout(request):
