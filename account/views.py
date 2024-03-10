@@ -1,21 +1,20 @@
 from django.shortcuts import render, redirect, reverse
 from .email_backend import EmailBackend
 from django.contrib import messages
-from .forms import CustomUserForm
+from .forms import CustomUserForm, DepartmentForm
 from django.contrib.auth import login, logout
 # Create your views here.
 
-
 def account_login(request):
-    if request.user.is_authenticated:
-        if user.user_type == '1':
-            return redirect(reverse("adminDashboard"))
-        elif user.user_type == '2':
-            return redirect(reverse("staffDashboard"))
-        else:
-            return redirect(reverse("cashierDashboard"))
+    # if request.user.is_authenticated:
+    #     if user.user_type == '1':
+    #         return redirect(reverse("adminDashboard"))
+    #     elif user.user_type == '2':
+    #         return redirect(reverse("staffDashboard"))
+    #     else:
+    #         return redirect(reverse("cashierDashboard"))
 
-    context = {}
+    # context = {}
     if request.method == 'POST':
         user = EmailBackend.authenticate(request, username=request.POST.get(
             'email'), password=request.POST.get('password'))
@@ -29,9 +28,9 @@ def account_login(request):
                 return redirect(reverse("cashierDashboard"))
         else:
             messages.error(request, "Invalid details")
-            return redirect("/")
+            return redirect("dashboard")
 
-    return render(request, "client/login.html", context)
+    return render(request, "auth/login.html")
 
 
 def account_register(request):
@@ -42,13 +41,14 @@ def account_register(request):
     if request.method == 'POST':
         if userForm.is_valid():
             user = userForm.save(commit=False)
+            user.department = userForm.cleaned_data['department']
             user.save()
             messages.success(request, "Account created. You can login now!")
             return redirect(reverse('account_login'))
         else:
             messages.error(request, "Provided data failed validation")
             # return account_login(request)
-    return render(request, "client/reg.html", context)
+    return render(request, "auth/reg.html", context)
 
 
 def account_logout(request):
@@ -61,3 +61,16 @@ def account_logout(request):
             request, "You need to be logged in to perform this action")
 
     return redirect(reverse("account_login"))
+
+def lock(request):
+    return render(request, 'auth/lock_screen.html')
+
+def create_department(request):
+    form = DepartmentForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('account_login')  
+    else:
+        messages.error(request, "Provided data failed validation")
+    return render(request, 'dep.html', {'form': form})
