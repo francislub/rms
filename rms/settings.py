@@ -49,6 +49,9 @@ INSTALLED_APPS = [
     'client.apps.ClientConfig',
     'administrator.apps.AdministratorConfig',
     'account.apps.AccountConfig',
+    'staff.apps.StaffConfig',
+    'business.apps.BusinessConfig',
+    'report.apps.ReportConfig',
 ]
 
 MIDDLEWARE = [
