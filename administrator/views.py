@@ -8,4 +8,4 @@ from django.http import JsonResponse, HttpResponse
 from django.conf import settings
 
 def dashboard(request):
-    return render(request, "client/dashboard.html")
+    return render(request, "admin/dashboard.html")
