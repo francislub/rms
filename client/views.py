@@ -15,6 +15,9 @@ def lock(request):
 def dep(request):
     return render(request, 'dep.html')
 
+def req(request):
+    return render(request, 'client/req.html')
+
 
 #===========Francis calling the dashbourd==============
 def dashboard(request):
