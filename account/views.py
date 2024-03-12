@@ -28,7 +28,7 @@ def account_login(request):
                 return redirect(reverse("cashierDashboard"))
         else:
             messages.error(request, "Invalid details")
-            return redirect("dashboard")
+            return redirect("adminDashboard")
 
     return render(request, "auth/login.html")
 
