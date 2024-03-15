@@ -22,6 +22,8 @@ def req(request):
 #===========Francis calling the dashbourd==============
 def dashboard(request):
     return render(request, 'dashboard.html')
+def client(request):
+    return render(request, 'client.html')
 
 
 def requisition_phase1(request):
