@@ -6,25 +6,30 @@
         <div class="col-md-12 m-b-30">
             <!-- begin page title -->
 
-                <form>
+            <form method="POST">
+                {% csrf_token %}
                 <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="number" class="form-control" placeholder="Enter email">
+                    <label for="id_amount">Amount</label>
+                    {{ form.amount }}
                 </div>
                 <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <textarea class="form-control" rows="3"></textarea>
+                    <label for="id_reason">Reason</label>
+                    {{ form.reason }}
                 </div>
                 <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <textarea class="form-control" rows="3"></textarea>
+                    <label for="id_department">Department</label>
+                    {{ form.department }}
                 </div>
-                <div class="input-group date display-years" data-date-format="dd-mm-yyyy" data-date="14-06-2018">
-                <input class="form-control" type="text" placeholder="12-12-2018">
-                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                <div class="form-group">
+                    <label for="id_requester">Requester</label>
+                    {{ form.requester }}
+                </div>
+                <div class="form-group">
+                    <label for="id_request_date">Request Date</label>
+                    {{ form.request_date }}
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+            </form>
         </div>
     </div>
 </div>
