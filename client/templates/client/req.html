@@ -1,5 +1,6 @@
 {% extends 'root.html' %}
 {% block content %}
+{% load crispy_forms_tags %}
 <div class="container-fluid">
     <!-- begin row -->
     <div class="row">
@@ -8,28 +9,8 @@
 
             <form method="POST" action="{% url 'requisition_phase1' %}">
                 {% csrf_token %}
-                <div class="form-group">
-                    <label for="id_amount">Amount:</label>
-                    <input type="number" class="form-control" id="id_amount" name="amount" placeholder="Enter amount" value="{{ form.amount.value }}">
-                </div>
-                <div class="form-group">
-                    <label for="id_reason">Reason:</label>
-                    <textarea class="form-control" id="id_reason" name="reason" rows="3" placeholder="Enter reason">{{ form.reason.value }}</textarea>
-                </div>
-                <div class="form-group">
-                    <label for="id_department">Department:</label>
-                    <select class="form-control" id="id_department" name="department">
-                        <option value="{{ form.department.value }}">{{ form.department.value }}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="id_requester">Requester</label>
-                    {{ form.requester }}
-                </div>
-                <div class="form-group">
-                    <label for="id_request_date">Request Date</label>
-                    {{ form.request_date }}
-                </div>
+                
+                {{ form|crispy}}
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

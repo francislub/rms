@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from .forms import RequisitionPhase1Form, RequisitionPhase2Form, RequisitionPhase3Form
 
 # Create your views here.
@@ -32,9 +32,11 @@ def requisition_phase1(request):
         form = RequisitionPhase1Form(request.POST)
         if form.is_valid():
             requisition = form.save(commit=False)
-            requisition.phase = 1
+            requisition.department = form.cleaned_data['department']
+            requisition.requester = form.cleaned_data['requester']
+            # requisition.phase = 1
             requisition.save()
-            return redirect('adminDashboard')
+            return redirect(reverse('adminDashboard'))
     else:
         form = RequisitionPhase1Form()
     return render(request, 'client/req.html', {'form': form})
