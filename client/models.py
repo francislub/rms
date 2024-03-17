@@ -19,7 +19,7 @@ class Requisition(models.Model):
     cashier_signature = models.ImageField(upload_to='cashier_signatures/', null=True, blank=True)
     receiver_signature = models.ImageField(upload_to='receiver_signatures/', null=True, blank=True)
     voucher_number = models.CharField(max_length=100, null=True, blank=True)
-    supervisor = models.ForeignKey(CustomUser, related_name='supervised_requisitions', on_delete=models.CASCADE)
+    supervisor = models.ForeignKey(CustomUser, related_name='supervised_requisitions', on_delete=models.CASCADE, null=True,)
     supervisor_comment = models.TextField(blank=True)
     supervisor_approval_date = models.DateTimeField(null=True, blank=True)
     phase = models.IntegerField(default=1)  

@@ -1,30 +1,18 @@
 {% extends 'root.html' %}
 {% block content %}
+{% load crispy_forms_tags %}
 <div class="container-fluid">
     <!-- begin row -->
     <div class="row">
         <div class="col-md-12 m-b-30">
             <!-- begin page title -->
 
-                <form>
-                <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="number" class="form-control" placeholder="Enter email">
-                </div>
-                <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <textarea class="form-control" rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <textarea class="form-control" rows="3"></textarea>
-                </div>
-                <div class="input-group date display-years" data-date-format="dd-mm-yyyy" data-date="14-06-2018">
-                <input class="form-control" type="text" placeholder="12-12-2018">
-                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                </div>
+            <form method="POST" action="{% url 'requisition_phase1' %}">
+                {% csrf_token %}
+                
+                {{ form|crispy}}
                 <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+            </form>
         </div>
     </div>
 </div>
