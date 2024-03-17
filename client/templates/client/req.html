@@ -6,7 +6,7 @@
         <div class="col-md-12 m-b-30">
             <!-- begin page title -->
 
-            <form method="POST">
+            <form action="{% url "requisition_phase1" %}" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="id_amount">Amount</label>
