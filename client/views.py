@@ -33,7 +33,7 @@ def requisition_phase1(request):
             requisition = form.save(commit=False)
             requisition.phase = 1
             requisition.save()
-            return redirect('requisition_phase2')
+            return redirect('adminDashboard')
     else:
         form = RequisitionPhase1Form()
     return render(request, 'requisition_phase1.html', {'form': form})
