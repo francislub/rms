@@ -34,7 +34,7 @@ def requisition_phase1(request):
             requisition = form.save(commit=False)
             requisition.department = form.cleaned_data['department']
             requisition.requester = form.cleaned_data['requester']
-            # requisition.phase = 1
+            requisition.phase = 1
             requisition.save()
             return redirect(reverse('adminDashboard'))
     else:
