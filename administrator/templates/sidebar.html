@@ -6,30 +6,35 @@
             <li class="nav-static-title">Personal</li>
             <li><a href="{% url "adminDashboard" %}" aria-expanded="false"><i class="nav-icon ti ti-rocket"></i><span class="nav-title">Dashboard</span></a> </li>
             <li><a href="{% url "requisition_phase1" %}" aria-expanded="false"><i class="nav-icon ti ti-email"></i><span class="nav-title">Requisition</span></a> </li>
-            <li><a href="app-chat.html" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">Business Office</span></a> </li>
+            {% comment %} <li><a href="app-chat.html" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">Business Office</span></a> </li> {% endcomment %}
             <li>
-                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-bag"></i> <span class="nav-title">UI Kit</span></a>
+                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-bag"></i> <span class="nav-title">Department</span></a>
                 <ul aria-expanded="false">
-                    <li> <a href="ui-alerts.html">Alerts</a> </li>
-                    <li> <a href="ui-accordions.html">Accordions</a> </li>
+                    <li> <a href="ui-alerts.html">Requisitions</a> </li>
+                    <li> <a href="ui-accordions.html">Completed</a> </li>
+                    <li> <a href="ui-accordions.html">Reports</a> </li>
                 </ul>
             </li>
             <li>
-                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-info"></i><span class="nav-title">Icons</span> </a>
+                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-bag"></i> <span class="nav-title">Business Office</span></a>
                 <ul aria-expanded="false">
-                    <li> <a href="icons-cryptocurrency.html">Cryptocurrency Icons</a> </li>
-                    <li> <a href="icons-drip.html">Drip Icons</a> </li>
+                    <li> <a href="ui-alerts.html">Requisitions</a> </li>
+                    <li> <a href="ui-accordions.html">Completed</a> </li>
+                    <li> <a href="ui-accordions.html">Reports</a> </li>
                 </ul>
             </li>
-            <li class="nav-static-title">Widgets, Tables & Layouts</li>
+            
+            <li class="nav-static-title">Administration</li>
             <li>
-                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"> <i class="nav-icon ti ti-layout-grid4-alt"></i> <span class="nav-title">Widgets</span> <span class="nav-label label label-success">New</span> </a>
+                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-bag"></i> <span class="nav-title">Status</span></a>
                 <ul aria-expanded="false">
-                    <li> <a href="widget-chart.html">Chart Widget</a> </li>
+                    <li> <a href="widget-chart.html">Pending Reports</a> </li>
 
-                    <li> <a href="widget-list.html">List Widget</a> </li>
+                    <li> <a href="widget-list.html">Complete Reports</a> </li>
 
-                    <li> <a href="widget-social.html">Social Widget</a> </li>
+                    <li> <a href="widget-social.html">Pending Requisition</a> </li>
+
+                    <li> <a href="widget-social.html">Completed Requisition</a> </li>
 
                 </ul>
             </li>
