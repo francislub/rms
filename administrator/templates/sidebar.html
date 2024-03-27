@@ -39,15 +39,15 @@
                 </ul>
             </li>
             <li>
-                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-key"></i> <span class="nav-title">Status</span></a>
+                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-key"></i> <span class="nav-title">Users</span></a>
                 <ul aria-expanded="false">
-                    <li> <a href="widget-chart.html">Pending Reports</a> </li>
+                    <li> <a href="widget-chart.html">Administrators</a> </li>
 
-                    <li> <a href="widget-list.html">Complete Reports</a> </li>
+                    <li> <a href="widget-list.html">Department</a> </li>
 
-                    <li> <a href="widget-social.html">Pending Requisition</a> </li>
+                    <li> <a href="widget-social.html">Business Office</a> </li>
 
-                    <li> <a href="widget-social.html">Completed Requisition</a> </li>
+                    <li> <a href="widget-social.html">Cashier Office</a> </li>
 
                 </ul>
             </li>
@@ -77,14 +77,8 @@
 
                 </ul>
             </li>
-            <li>
-                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-key"></i><span class="nav-title">Auth</span></a>
-                <ul aria-expanded="false">
-                    <li> <a href="auth-login.html">Login</a> </li>
-                    <li> <a href="auth-register.html">Register</a> </li>
-                    <li> <a href="auth-lockscreen.html">Lock Screen</a> </li>
-                </ul>
-            </li>
+
+            <li><a href="{% url "requisition_phase1" %}" aria-expanded="false"><i class="nav-icon ti ti-key"></i><span class="nav-title">Logout</span></a> </li>
         </ul>
     </div>
     <!-- end sidebar-nav -->
