@@ -9,3 +9,9 @@ from django.conf import settings
 
 def dashboard(request):
     return render(request, "admin/dashboard.html")
+
+def reqStatus(request):
+    return render(request, "admin/reqStatus.html")
+
+def reportStatus(request):
+    return render(request, "admin/reportStatus.html")

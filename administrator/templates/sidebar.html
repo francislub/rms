@@ -3,7 +3,7 @@
     <!-- begin sidebar-nav -->
     <div class="sidebar-nav scrollbar scroll_light">
         <ul class="metismenu " id="sidebarNav">
-            <li class="nav-static-title">Personal</li>
+            <li class="nav-static-title">General</li>
             <li><a href="{% url "adminDashboard" %}" aria-expanded="false"><i class="nav-icon ti ti-rocket"></i><span class="nav-title">Dashboard</span></a> </li>
             <li><a href="{% url "requisition_phase1" %}" aria-expanded="false"><i class="nav-icon ti ti-email"></i><span class="nav-title">Requisition</span></a> </li>
             {% comment %} <li><a href="app-chat.html" aria-expanded="false"><i class="nav-icon ti ti-user"></i><span class="nav-title">Business Office</span></a> </li> {% endcomment %}
@@ -28,6 +28,27 @@
             <li>
                 <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-bag"></i> <span class="nav-title">Status</span></a>
                 <ul aria-expanded="false">
+                    <li> <a href="{% url "reqst" %}">Requisition</a> </li>
+
+                    <li> <a href="{% url "repst" %}">Reports</a> </li>
+                </ul>
+            </li>
+            <li>
+                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-key"></i> <span class="nav-title">Users</span></a>
+                <ul aria-expanded="false">
+                    <li> <a href="widget-chart.html">Administrators</a> </li>
+
+                    <li> <a href="widget-list.html">Department</a> </li>
+
+                    <li> <a href="widget-social.html">Business Office</a> </li>
+
+                    <li> <a href="widget-social.html">Cashier Office</a> </li>
+
+                </ul>
+            </li>
+            {% comment %} <li>
+                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-layout-column3-alt"></i> <span class="nav-title">R</span></a>
+                <ul aria-expanded="false">
                     <li> <a href="widget-chart.html">Pending Reports</a> </li>
 
                     <li> <a href="widget-list.html">Complete Reports</a> </li>
@@ -37,48 +58,22 @@
                     <li> <a href="widget-social.html">Completed Requisition</a> </li>
 
                 </ul>
-            </li>
-            <li>
-                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-layout-column3-alt"></i><span class="nav-title">Tables</span></a>
+            </li> {% endcomment %}
+            {% comment %} <li>
+                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-pie-chart"></i> <span class="nav-title"></span></a>
                 <ul aria-expanded="false">
-                    <li> <a href="tables-basic.html">Basic Table</a> </li>
-                    <li> <a href="tables-color.html">Color Table </a> </li>
-                    <li> <a href="tables-datatable.html">Data Table</a> </li>
-                    <li> <a href="tables-editable.html">Editable Table</a> </li>
-                    <li> <a href="tables-export.html">Export Table</a> </li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-layout"></i> <span class="nav-title">Layouts</span></a>
-                <ul aria-expanded="false">
-                    <li><a href="layout-mini.html">Sidebar Mini</a></li>
+                    <li> <a href="widget-chart.html">Pending Reports</a> </li>
+
+                    <li> <a href="widget-list.html">Complete Reports</a> </li>
+
+                    <li> <a href="widget-social.html">Pending Requisition</a> </li>
+
+                    <li> <a href="widget-social.html">Completed Requisition</a> </li>
 
                 </ul>
-            </li>
-            <li>
-                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-pie-chart"></i><span class="nav-title">Charts</span></a>
-                <ul aria-expanded="false">
-                    <li> <a href="chart-apex.html">Apex Chart</a> </li>
-                    <li> <a href="chart-flot.html">Flot Chart</a> </li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-layers"></i><span class="nav-title">Pages</span><span class="nav-label label label-primary">12</span></a>
-                <ul aria-expanded="false">
-                    <li> <a href="page-account-settings.html">Account Settings</a> </li>
-                    <li> <a href="page-clients.html">Clients</a> </li>
-                    <li> <a href="page-contacts.html">Contacts</a> </li>
-                    <li> <a href="page-employees.html">Employees</a> </li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-key"></i><span class="nav-title">Auth</span></a>
-                <ul aria-expanded="false">
-                    <li> <a href="auth-login.html">Login</a> </li>
-                    <li> <a href="auth-register.html">Register</a> </li>
-                    <li> <a href="auth-lockscreen.html">Lock Screen</a> </li>
-                </ul>
-            </li>
+            </li> {% endcomment %}
+
+            <li><a href="{% url "account_logout" %}" aria-expanded="false"><i class="nav-icon ti ti-key"></i><span class="nav-title">Logout</span></a> </li>
         </ul>
     </div>
     <!-- end sidebar-nav -->
