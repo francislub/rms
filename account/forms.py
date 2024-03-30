@@ -38,12 +38,12 @@ class CustomUserForm(FormSettings):
 
     def clean_email(self):
         email = self.cleaned_data['email'].lower()
-        if self.instance.pk is None:  # Insert
+        if self.instance.pk is None: 
             if CustomUser.objects.filter(email=email).exists():
                 raise forms.ValidationError("The given email is already registered")
-        else:  # Update
+        else: 
             db_email = CustomUser.objects.get(id=self.instance.pk).email.lower()
-            if db_email != email:  # There has been changes
+            if db_email != email:  
                 if CustomUser.objects.filter(email=email).exists():
                     raise forms.ValidationError("The given email is already registered")
         return email
@@ -62,7 +62,7 @@ class CustomUserForm(FormSettings):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password"])
-        user.username = self.cleaned_data["employee_code"]  # Set employee code as the username
+        user.username = self.cleaned_data["employee_code"] 
         if commit:
             user.save()
         return user
