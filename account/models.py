@@ -41,8 +41,9 @@ class CustomUser(AbstractUser):
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
     email = models.EmailField(unique=True)
+    employee_code = models.CharField(max_length=100, unique=True, blank=True, null=True)
     full_name = models.CharField(max_length=255, blank=True)
-    USERNAME_FIELD = "email"
+    USERNAME_FIELD = 'employee_code'
     REQUIRED_FIELDS = []
     objects = CustomUserManager()
     department = models.ForeignKey(Department, related_name='users', on_delete=models.SET_NULL, null=True, blank=True)

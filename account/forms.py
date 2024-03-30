@@ -16,6 +16,7 @@ class FormSettings(forms.ModelForm):
 class CustomUserForm(FormSettings):
     email = forms.EmailField(required=True)
     password = forms.CharField(widget=forms.PasswordInput)
+    employee_code = forms.CharField(required=True)  # Add employee code field
     
     widget = {
         'password': forms.PasswordInput(),
@@ -56,11 +57,12 @@ class CustomUserForm(FormSettings):
 
     class Meta:
         model = CustomUser
-        fields = ['last_name', 'first_name', 'email', 'password', 'department']
+        fields = ['last_name', 'first_name', 'email', 'password', 'department', 'employee_code']  # Add employee_code to fields
 
     def save(self, commit=True):
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password"])
+        user.username = self.cleaned_data["employee_code"]  # Set employee code as the username
         if commit:
             user.save()
         return user
