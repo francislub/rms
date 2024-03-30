@@ -43,7 +43,7 @@ def department_approval(request, requisition_id):
     }
     return render(request, 'reqStatus.html', context)
 
-def reqStatus(request):
+def dep_reqStatus(request):
     requisitions = Requisition.objects.all()
     return render(request, "reqStatus.html", {'requisitions': requisitions})
 
