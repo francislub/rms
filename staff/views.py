@@ -1,21 +1,20 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import DepartmentApproval
 from .forms import DepartmentApprovalForm
+from client.models import Requisition  
+# from account.models import CustomUser  
 
-@login_required
-def approve_requisition(request, requisition_id):
-    # Assuming you have a method to retrieve the requisition object based on the requisition_id
-    requisition = get_requisition(requisition_id)
+def department_approval(request, requisition_id):
+    requisition = Requisition.objects.get(id=requisition_id)
+    department = requisition.department
+    current_user = request.user  
 
-    # Get the current user
-    current_user = request.user
+    if current_user.user_type != 2 or current_user.department != department:
+        messages.error(request, "You are not authorized to approve requisitions for this department.")
+        return redirect('some_redirect_view')  
 
-    # Determine the department of the current user (customize this based on your user model)
-    department = current_user.department  # Assuming the department is a field on the user model
-
-    # Determine the approver based on the department (customize this logic based on your requirements)
-    approver = get_approver_for_department(department)
+    requisition_approvals = DepartmentApproval.objects.filter(requisition=requisition)
 
     if request.method == 'POST':
         form = DepartmentApprovalForm(request.POST)
@@ -24,14 +23,22 @@ def approve_requisition(request, requisition_id):
             department_approval.requisition = requisition
             department_approval.department = department
             department_approval.approved_by = current_user
-            department_approval.approver = approver
             department_approval.save()
-            return redirect('requisition_detail', requisition_id=requisition.id)
+
+            if department_approval.approval_status == 'APPROVED':
+                requisition.status = 'APPROVED'
+            else:
+                requisition.status = 'REJECTED'
+            requisition.save()
+
+            messages.success(request, "Requisition has been approved successfully.")
+            return redirect('some_redirect_view')  
     else:
-        form = DepartmentApprovalForm(initial={'approver': approver})  # Pre-populate the form with the determined approver
+        form = DepartmentApprovalForm()
 
     context = {
         'form': form,
         'requisition': requisition,
+        'requisition_approvals': requisition_approvals,
     }
-    return render(request, 'approve_requisition.html', context)
+    return render(request, 'department_approval.html', context)

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Requisition
+from .models import DepartmentApproval
 
 class DepartmentApprovalForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
