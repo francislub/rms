@@ -47,6 +47,7 @@ def requisition_phase2(request):
         if form.is_valid():
             requisition = form.save(commit=False)
             requisition.phase = 2
+            requisition.user = request.user
             requisition.save()
             return redirect('requisition_phase2')
     else:
