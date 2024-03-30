@@ -1,6 +1,6 @@
 from django.db import models
-from client.models import Requisition  # Assuming Requisition model is defined in the client app
-from account.models import CustomUser  # Assuming CustomUser model is defined in the account app
+from client.models import Requisition  
+from account.models import CustomUser 
 
 class DepartmentApproval(models.Model):
     requisition = models.ForeignKey(Requisition, on_delete=models.CASCADE)
