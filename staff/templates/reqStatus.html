@@ -40,8 +40,8 @@
                                 <td>{{ requisition.department }}</td>
                                 <td>{{ requisition.status }}</td>
                                 <td>
-                                    <a href="{% url 'approve_requisition' requisition.id %}" class="btn btn-success">Approve</a>
-                                    <a href="{% url 'reject_requisition' requisition.id %}" class="btn btn-danger">Reject</a>
+                                    <a href="{% url 'department_approval' %}" class="btn btn-success">Approve</a>
+                                    {% comment %} <a href="{% url 'reject_requisition' requisition.id %}" class="btn btn-danger">Reject</a> {% endcomment %}
                                 </td>
                             </tr>
                             {% endfor %}

@@ -15,3 +15,4 @@ def reqStatus(request):
 
 def reportStatus(request):
     return render(request, "admin/reportStatus.html")
+
