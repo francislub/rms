@@ -1,6 +1,7 @@
 {% extends 'root.html' %}
 {% load static %}
 {% block content %}
+{% load crispy_forms_tags %}
 <div class="row crypto-currency">
     <div class="col-lg-12">
         <div class="card card-statistics crypto-currency">
@@ -40,10 +41,33 @@
                                 <td>{{ requisition.department }}</td>
                                 <td>{{ requisition.status }}</td>
                                 <td>
-                                    <a href="{% url 'department_approval' %}" class="btn btn-success">Approve</a>
-                                    {% comment %} <a href="{% url 'reject_requisition' requisition.id %}" class="btn btn-danger">Reject</a> {% endcomment %}
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#approvalModal{{ requisition.id }}">Approve</button>
                                 </td>
                             </tr>
+                            <!-- Modal -->
+                            <div class="modal fade" id="approvalModal{{ requisition.id }}" tabindex="-1" role="dialog" aria-labelledby="approvalModalLabel{{ requisition.id }}" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="approvalModalLabel{{ requisition.id }}">Approve Requisition</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="POST" action="{% url 'department_approval' requisition.id %}">
+                                                {% csrf_token %}
+                
+                                                {{ form|crispy}}
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Approve</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             {% endfor %}
                         </tbody>
                     </table>
