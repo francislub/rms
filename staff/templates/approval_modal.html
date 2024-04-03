@@ -1,0 +1,15 @@
+<form id="approvalForm" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<script>
+    $('#approvalModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); 
+        var requisitionId = button.data('requisition-id');
+        var form = $('#approvalForm');
+        var action = form.attr('action').split('?')[0];  // Remove query parameters
+        form.attr('action', action + requisitionId + '/');
+    });
+</script>
