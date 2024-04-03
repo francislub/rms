@@ -5,4 +5,6 @@ urlpatterns = [
     path('', views.dashboard, name="adminDashboard"),
     path('reqst/', views.reqStatus, name="reqst"),
     path('repst/', views.reportStatus, name="repst"),
+    path('requisition/', views.requisition_view, name="requisition"),
+    
 ]
