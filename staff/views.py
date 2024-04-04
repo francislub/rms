@@ -8,6 +8,7 @@ from client.models import Requisition
 def department_approval(request, requisition_id):
     requisition = Requisition.objects.get(id=requisition_id)
     department = requisition.department
+    comments = request.POST.get('comments')
     current_user = request.user  
 
     if current_user.user_type != 2 or current_user.department != department:
@@ -23,6 +24,7 @@ def department_approval(request, requisition_id):
             department_approval.requisition = requisition
             department_approval.department = department
             department_approval.approved_by = current_user
+            department_approval.comments = comments
             department_approval.save()
 
             if department_approval.approval_status == 'APPROVED':
@@ -46,4 +48,6 @@ def department_approval(request, requisition_id):
 def dep_reqStatus(request):
     requisitions = Requisition.objects.all()
     return render(request, "depReqStatus.html", {'requisitions': requisitions})
+
+
 
