@@ -49,5 +49,3 @@ def dep_reqStatus(request):
     requisitions = Requisition.objects.all()
     return render(request, "depReqStatus.html", {'requisitions': requisitions})
 
-
-
